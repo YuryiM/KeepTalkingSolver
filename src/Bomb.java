@@ -96,7 +96,6 @@ public class Bomb {
             }
           }
           //Returns which wire to cut
-          //!!!CHANGE TO CHECK LAST DIGIT OF SERIAL NUMBER!!!
           if(numRedWires > 1 && (lastSerialNumDigit % 2 == 1)){
         	System.out.println(lastSerialNumDigit);
             return "Cut the last red wire";
@@ -415,6 +414,13 @@ public class Bomb {
         The expert would then speak a list of the words, one at a time,
         until a match is found. The diffuser presses the matching button.
          */
+    	Scanner keyboard = new Scanner(System.in);
+        System.out.print("Enter the label: ");
+        String response = keyboard.nextLine().toLowerCase();
+        
+        while(){
+        	
+        }
     }
 
     public void memory(){
