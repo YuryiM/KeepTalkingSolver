@@ -7,6 +7,7 @@ public class Bomb {
     private boolean frk;
     private boolean car;
     private int n_strikes;
+    private int passwordLetter;
 
     public Bomb(String sn, int bat){
         serial_number = new SerialNumber(sn);
@@ -573,6 +574,13 @@ public class Bomb {
         position, which is then input into the solver.
          */
     	
+    	/* 
+    	 * THE BUTTON POSITIONS CHANGE WITH EVERY STAGE
+    	 */
+    	
+    	//Stage 1
+    	
+    	
     }
 
     public String passwords(String initial){
@@ -587,10 +595,33 @@ public class Bomb {
             The initial sequence of letters.
          */
         String str = "";
-
+        String[] validPasswords = {"about", "after", "again", "below", "could", "every", "first", "found", "great", "house", "large", "learn", "never", "other", "place", "plant", "point", "right", "small", "sound", "spell", "still", "study", "their", "there", "these", "thing", "think", "three", "water", "where", "which", "world", "would", "write"};
+        passwordLetter = 0;
+        Scanner keyboard = new Scanner(System.in);
+        while(initial.length() > 1) {
+        	for(int i = 0; i < validPasswords.length; i++) {
+            	if(containsLetter(initial, validPasswords[i])) {
+            		str += validPasswords[i] + " ";
+            	}
+            }
+        	System.out.println(str);
+        	str = ""
+        	passwordLetter++;
+        	System.out.print("Enter the possible letters for position" + passwordLetter +  "(Enter '0' to exit): ");
+        	initial = keyboard.nextLine().toLowerCase();
+        }
+        
         return str;
     }
-
+    
+    public boolean containsLetter(String initial, String word) {
+    	for(int i = 0; i < initial.length(); i++) {
+    		if(word.charAt(passwordLetter) == initial.charAt(i)) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
     public void sequences(){
         /*
         Solve a *Wire Sequences* module.
