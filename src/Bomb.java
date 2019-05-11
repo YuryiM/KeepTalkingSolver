@@ -608,16 +608,13 @@ public class Bomb {
         }
         for(String o: newPossPasswords) { System.out.print(o + " "); }
         System.out.println(); 
+        passwordLetter++;
+		System.out.print("Enter the possible letters for position " + (passwordLetter+1) +  " (Enter '0' to exit): ");
+		System.out.println();
     	currentLetters = keyboard.nextLine().toLowerCase();
         //Goes through valid passwords
         while(newPossPasswords.size() > 1) {
-        	System.out.println("TEST");
-        	passwordLetter++;
-        	System.out.print("Enter the possible letters for position " + (passwordLetter+1) +  " (Enter '0' to exit): ");
-	    	currentLetters = keyboard.nextLine().toLowerCase();
-        	
-	    	
-	    	int sizeArrList = newPossPasswords.size();
+        	int sizeArrList = newPossPasswords.size();
 	    	for(int j = 0; j < sizeArrList; j++) {
 	    		if(!containsLetter(currentLetters, newPossPasswords.get(j))) {
 	    			newPossPasswords.remove(j);
@@ -625,15 +622,18 @@ public class Bomb {
 	    			j=0;
 	    		}
 	    	}
-	    	
+	    	passwordLetter++;
 	    	for(String o: newPossPasswords) { System.out.print(o + " "); System.out.println(); }
-	    	
+	    	if(newPossPasswords.size() > 1) {
+	    		System.out.print("Enter the possible letters for position " + (passwordLetter+1) +  " (Enter '0' to exit): ");
+		    	currentLetters = keyboard.nextLine().toLowerCase();
+	    	}
 	    	
         }
     	
         
         
-        return newPossPasswords.get(0);
+        return str;
     }
     
     public boolean containsLetter(String initial, String word) {
