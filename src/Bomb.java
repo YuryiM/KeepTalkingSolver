@@ -454,7 +454,6 @@ public class Bomb {
 								     {"see", p6},
 								     {"c", p2},
 								     {"cee", p6}};
-        String[][] correspondingList = {{}};
         while(whosValidResponse(response)){
         	for(int i = 0; i < buttonPositions.length; i++) {
         		if(buttonPositions[i][0].equals(response)) {
@@ -577,108 +576,156 @@ public class Bomb {
     	/* 
     	 * THE BUTTON POSITIONS CHANGE WITH EVERY STAGE
     	 */
-    	int display;
     	Scanner keyboard = new Scanner(System.in);
     	int stage = 1;
     	int stageOneNumber = 0, stageTwoNumber = 0, stageThreeNumber = 0, stageFourNumber = 0;
     	while(stage < 6) {
-    		System.out.print("Enter the number displayed: ");
-    		System.out.println();
-    		display = keyboard.nextInt();
     		switch(stage) {
 			case 1:
 				System.out.println("----------");
 				System.out.println("STAGE ONE");
 				System.out.println("----------");
-				switch(display) {
+				switch(getDisplayNum()) {
 				case 1:
 					System.out.println("Press the button in the second position");
 					System.out.print("Enter the number in the second position: ");
 					stageOneNumber = keyboard.nextInt();
+					stage++;
+					break;
 				case 2:
 					System.out.println("Press the button in the second position");
 					System.out.print("Enter the number in the second position: ");
 					stageOneNumber = keyboard.nextInt();
+					stage++;
+					break;
 				case 3:
 					System.out.println("Press the button in the third position");
 					System.out.print("Enter the number in the third position: ");
 					stageOneNumber = keyboard.nextInt();
-				
+					stage++;
+					break;
 				case 4:
 					System.out.println("Press the button in the fourth position");
 					System.out.print("Enter the number in the fourth position: ");
 					stageOneNumber = keyboard.nextInt();
+					stage++;
+					break;
 				}
 			case 2:
 				System.out.println("---------");
 				System.out.println("STAGE TWO");
 				System.out.println("---------");
-				switch(stage) {
+				switch(getDisplayNum()) {
 				case 1:
 					System.out.println("Press the button labeled 4");
 					stageTwoNumber = 4;
+					stage++;
+					break;
 				case 2:
 					System.out.println("Press the button labeled " + stageOneNumber);
 					stageTwoNumber = stageOneNumber;
+					stage++;
+					break;
 				case 3:
 					System.out.println("Press the button in the first position");
 					System.out.print("Enter the number in the first position: ");
 					stageTwoNumber = keyboard.nextInt();
+					stage++;
+					break;
 				case 4:
 					System.out.println("Press the button labeled " + stageOneNumber);
 					stageTwoNumber = stageOneNumber;
+					stage++;
+					break;
 				}
 			case 3:
-				switch(stage) {
+				System.out.println("-----------");
+				System.out.println("STAGE THREE");
+				System.out.println("-----------");
+				switch(getDisplayNum()) {
 				case 1:
 					System.out.println("Press the button labeled " + stageTwoNumber);
 					stageThreeNumber = stageTwoNumber;
+					stage++;
+					break;
 				case 2:
 					System.out.println("Press the button labeled " + stageOneNumber);
 					stageThreeNumber = stageOneNumber;
+					stage++;
+					break;
 				case 3:
 					System.out.println("Press the button in the third position");
 					System.out.print("Enter the number in the third position: ");
 					stageThreeNumber = keyboard.nextInt();
+					stage++;
+					break;
 				case 4:
 					System.out.println("Press the button labeled 4");
 					stageThreeNumber = 4;
+					stage++;
+					break;
 				}
 			case 4:
-				switch(stage) {
+				System.out.println("----------");
+				System.out.println("STAGE FOUR");
+				System.out.println("----------");
+				switch(getDisplayNum()) {
 				case 1:
 					System.out.println("Press the button labeled " + stageOneNumber);
 					stageFourNumber = stageOneNumber;
+					stage++;
+					break;
 				case 2:
 					System.out.println("Press the button in the first position");
 					System.out.print("Enter the number in the first position: ");
 					stageFourNumber = keyboard.nextInt();
+					stage++;
+					break;
 				case 3:
 					System.out.println("Press the button labeled " + stageTwoNumber);
 					stageFourNumber = stageTwoNumber;
+					stage++;
+					break;
 				case 4:
 					System.out.println("Press the button labeled " + stageTwoNumber);
 					stageFourNumber = stageTwoNumber;
+					stage++;
+					break;
+					
 				}
 			case 5:
-				switch(stage) {
+				System.out.println("-----------");
+				System.out.println("STAGE FIVE");
+				System.out.println("-----------");
+				switch(getDisplayNum()) {
 				case 1:
 					System.out.println("Press the button labeled " + stageOneNumber);
+					stage++;
+					break;
 				case 2:
 					System.out.println("Press the button labeled " + stageTwoNumber);
+					stage++;
+					break;
 				case 3:
 					System.out.println("Press the button labeled " + stageFourNumber);
+					stage++;
+					break;
 				case 4:
 					System.out.println("Press the button labeled " + stageThreeNumber);
+					stage++;
+					break;
 				}
     		}
     		
-    	}
-		
-    	
-    	
-    	
+    	}	
     }
+    private int getDisplayNum() {
+
+    	Scanner keyboard = new Scanner(System.in);
+		System.out.print("Enter the number displayed: ");
+		System.out.println();
+		return keyboard.nextInt();
+	}
 
     public String passwords(String initial){
         /*
@@ -752,5 +799,6 @@ public class Bomb {
         - black : k
         - red : r
          */
+    	
     }
 }
