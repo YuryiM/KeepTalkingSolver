@@ -577,8 +577,105 @@ public class Bomb {
     	/* 
     	 * THE BUTTON POSITIONS CHANGE WITH EVERY STAGE
     	 */
+    	int display;
+    	Scanner keyboard = new Scanner(System.in);
+    	int stage = 1;
+    	int stageOneNumber = 0, stageTwoNumber = 0, stageThreeNumber = 0, stageFourNumber = 0;
+    	while(stage < 6) {
+    		System.out.print("Enter the number displayed: ");
+    		System.out.println();
+    		display = keyboard.nextInt();
+    		switch(stage) {
+			case 1:
+				System.out.println("----------");
+				System.out.println("STAGE ONE");
+				System.out.println("----------");
+				switch(display) {
+				case 1:
+					System.out.println("Press the button in the second position");
+					System.out.print("Enter the number in the second position: ");
+					stageOneNumber = keyboard.nextInt();
+				case 2:
+					System.out.println("Press the button in the second position");
+					System.out.print("Enter the number in the second position: ");
+					stageOneNumber = keyboard.nextInt();
+				case 3:
+					System.out.println("Press the button in the third position");
+					System.out.print("Enter the number in the third position: ");
+					stageOneNumber = keyboard.nextInt();
+				
+				case 4:
+					System.out.println("Press the button in the fourth position");
+					System.out.print("Enter the number in the fourth position: ");
+					stageOneNumber = keyboard.nextInt();
+				}
+			case 2:
+				System.out.println("---------");
+				System.out.println("STAGE TWO");
+				System.out.println("---------");
+				switch(stage) {
+				case 1:
+					System.out.println("Press the button labeled 4");
+					stageTwoNumber = 4;
+				case 2:
+					System.out.println("Press the button labeled " + stageOneNumber);
+					stageTwoNumber = stageOneNumber;
+				case 3:
+					System.out.println("Press the button in the first position");
+					System.out.print("Enter the number in the first position: ");
+					stageTwoNumber = keyboard.nextInt();
+				case 4:
+					System.out.println("Press the button labeled " + stageOneNumber);
+					stageTwoNumber = stageOneNumber;
+				}
+			case 3:
+				switch(stage) {
+				case 1:
+					System.out.println("Press the button labeled " + stageTwoNumber);
+					stageThreeNumber = stageTwoNumber;
+				case 2:
+					System.out.println("Press the button labeled " + stageOneNumber);
+					stageThreeNumber = stageOneNumber;
+				case 3:
+					System.out.println("Press the button in the third position");
+					System.out.print("Enter the number in the third position: ");
+					stageThreeNumber = keyboard.nextInt();
+				case 4:
+					System.out.println("Press the button labeled 4");
+					stageThreeNumber = 4;
+				}
+			case 4:
+				switch(stage) {
+				case 1:
+					System.out.println("Press the button labeled " + stageOneNumber);
+					stageFourNumber = stageOneNumber;
+				case 2:
+					System.out.println("Press the button in the first position");
+					System.out.print("Enter the number in the first position: ");
+					stageFourNumber = keyboard.nextInt();
+				case 3:
+					System.out.println("Press the button labeled " + stageTwoNumber);
+					stageFourNumber = stageTwoNumber;
+				case 4:
+					System.out.println("Press the button labeled " + stageTwoNumber);
+					stageFourNumber = stageTwoNumber;
+				}
+			case 5:
+				switch(stage) {
+				case 1:
+					System.out.println("Press the button labeled " + stageOneNumber);
+				case 2:
+					System.out.println("Press the button labeled " + stageTwoNumber);
+				case 3:
+					System.out.println("Press the button labeled " + stageFourNumber);
+				case 4:
+					System.out.println("Press the button labeled " + stageThreeNumber);
+				}
+    		}
+    		
+    	}
+		
     	
-    	//Stage 1
     	
     	
     }
@@ -623,7 +720,8 @@ public class Bomb {
 	    		}
 	    	}
 	    	passwordLetter++;
-	    	for(String o: newPossPasswords) { System.out.print(o + " "); System.out.println(); }
+	    	for(String o: newPossPasswords) { System.out.print(o + " "); }
+	    	System.out.println();
 	    	if(newPossPasswords.size() > 1) {
 	    		System.out.print("Enter the possible letters for position " + (passwordLetter+1) +  " (Enter '0' to exit): ");
 		    	currentLetters = keyboard.nextLine().toLowerCase();
