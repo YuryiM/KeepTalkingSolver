@@ -7,7 +7,7 @@ public class Bomb {
     private boolean frk;
     private boolean car;
     private int n_strikes;
-    private int passwordLetter;
+    private int passwordLetter = 0; //For the password module
 
     public Bomb(String sn, int bat){
         serial_number = new SerialNumber(sn);
@@ -736,25 +736,14 @@ public class Bomb {
         initial : str
             The initial sequence of letters.
          */
+    	// MUST FIX
+    	Scanner keyboard = new Scanner(System.in);
         String[] validPasswords = {"about", "after", "again", "below", "could", "every", "first", "found", "great", "house", "large", "learn", "never", "other", "place", "plant", "point", "right", "small", "sound", "spell", "still", "study", "their", "there", "these", "thing", "think", "three", "water", "where", "which", "world", "would", "write"};
         ArrayList<String> newPossPasswords = new ArrayList<String>();
-        passwordLetter = 0;
-        Scanner keyboard = new Scanner(System.in);
+        for(String i: validPasswords) { newPossPasswords.add(i); }
         String currentLetters = initial;
-        //Filters through first letters
-        for(int i = 0; i < validPasswords.length; i++) {
-        	if(containsLetter(initial, validPasswords[i])) {
-        		newPossPasswords.add(validPasswords[i]);
-        	}
-        }
-        for(String o: newPossPasswords) { System.out.print(o + " "); }
-        System.out.println(); 
-        passwordLetter++;
-		System.out.print("Enter the possible letters for position " + (passwordLetter+1) +  " (Enter '0' to exit): ");
-		System.out.println();
-    	currentLetters = keyboard.nextLine().toLowerCase();
         //Goes through valid passwords
-        while(newPossPasswords.size() > 1) {
+        while(newPossPasswords.size() > 1 && !currentLetters.equals("0") && passwordLetter < 5) {
         	int sizeArrList = newPossPasswords.size();
 	    	for(int j = 0; j < sizeArrList; j++) {
 	    		if(!containsLetter(currentLetters, newPossPasswords.get(j))) {
@@ -763,10 +752,10 @@ public class Bomb {
 	    			j=0;
 	    		}
 	    	}
-	    	passwordLetter++;
-	    	for(String o: newPossPasswords) { System.out.print(o + " "); }
-	    	System.out.println();
 	    	if(newPossPasswords.size() > 1) {
+	    		passwordLetter++;
+		    	for(String o: newPossPasswords) { System.out.print(o + " "); }
+		    	System.out.println();
 	    		System.out.print("Enter the possible letters for position " + (passwordLetter+1) +  " (Enter '0' to exit): ");
 		    	currentLetters = keyboard.nextLine().toLowerCase();
 	    	}
