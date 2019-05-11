@@ -596,22 +596,44 @@ public class Bomb {
          */
         String str = "";
         String[] validPasswords = {"about", "after", "again", "below", "could", "every", "first", "found", "great", "house", "large", "learn", "never", "other", "place", "plant", "point", "right", "small", "sound", "spell", "still", "study", "their", "there", "these", "thing", "think", "three", "water", "where", "which", "world", "would", "write"};
+        ArrayList<String> newPossPasswords = new ArrayList<String>();
         passwordLetter = 0;
         Scanner keyboard = new Scanner(System.in);
-        while(initial.length() > 1) {
-        	for(int i = 0; i < validPasswords.length; i++) {
-            	if(containsLetter(initial, validPasswords[i])) {
-            		str += validPasswords[i] + " ";
-            	}
-            }
-        	System.out.println(str);
-        	str = ""
-        	passwordLetter++;
-        	System.out.print("Enter the possible letters for position" + passwordLetter +  "(Enter '0' to exit): ");
-        	initial = keyboard.nextLine().toLowerCase();
+        String currentLetters = initial;
+        //Filters through first letters
+        for(int i = 0; i < validPasswords.length; i++) {
+        	if(containsLetter(initial, validPasswords[i])) {
+        		newPossPasswords.add(validPasswords[i]);
+        	}
         }
+        for(String o: newPossPasswords) { System.out.print(o + " "); }
+        System.out.println(); 
+    	currentLetters = keyboard.nextLine().toLowerCase();
+        //Goes through valid passwords
+        while(newPossPasswords.size() > 1) {
+        	System.out.println("TEST");
+        	passwordLetter++;
+        	System.out.print("Enter the possible letters for position " + (passwordLetter+1) +  " (Enter '0' to exit): ");
+	    	currentLetters = keyboard.nextLine().toLowerCase();
+        	
+	    	
+	    	int sizeArrList = newPossPasswords.size();
+	    	for(int j = 0; j < sizeArrList; j++) {
+	    		if(!containsLetter(currentLetters, newPossPasswords.get(j))) {
+	    			newPossPasswords.remove(j);
+	    			sizeArrList = newPossPasswords.size();
+	    			j=0;
+	    		}
+	    	}
+	    	
+	    	for(String o: newPossPasswords) { System.out.print(o + " "); System.out.println(); }
+	    	
+	    	
+        }
+    	
         
-        return str;
+        
+        return newPossPasswords.get(0);
     }
     
     public boolean containsLetter(String initial, String word) {
