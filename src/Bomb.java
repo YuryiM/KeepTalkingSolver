@@ -301,103 +301,101 @@ public class Bomb {
          */
         //Ask for input
         Scanner keyboard = new Scanner(System.in);
-        boolean askingForInput = true;
-        String colorTracker = "";
         System.out.print("Enter the color: ");
         String response = keyboard.nextLine();
         while(response.equals("b") || response.equals("g") || response.equals("r") || response.equals("y")){
           //Gets input for next loop
           if(!serial_number.has_vowel()){
             switch(response){
-              case "r":
-                if(n_strikes == 0){
-                  System.out.println("Press the blue button");
-                }
-                else if(n_strikes == 1){
-                  System.out.println("Press the yellow button");
-                }
-                else if (n_strikes == 2){
-                  System.out.println("Press the green button");
-                }
-                break;
-              case "b":
-                if(n_strikes == 0){
-                  System.out.println("Press the red button");
-                }
-                else if(n_strikes == 1){
-                  System.out.println("Press the green button");
-                }
-                else if (n_strikes == 2){
-                  System.out.println("Press the red button");
-                }
-                break;
-              case "g":
-                if(n_strikes == 0){
-                  System.out.println("Press the yellow button");
-                }
-                else if(n_strikes == 1){
-                  System.out.println("Press the blue button");
-                }
-                else if (n_strikes == 2){
-                  System.out.println("Press the yellow button");
-                }
-                break;
-              case "y":
-                if(n_strikes == 0){
-                  System.out.println("Press the green button");
-                }
-                else if(n_strikes == 1){
-                  System.out.println("Press the red button");
-                }
-                else if (n_strikes == 2){
-                  System.out.println("Press the blue button");
-                }
-                break;
-            }
+		    case "r":
+				if(n_strikes == 0){
+				  System.out.println("Press the blue button");
+				}
+				else if(n_strikes == 1){
+				  System.out.println("Press the yellow button");
+				}
+				else if (n_strikes == 2){
+				  System.out.println("Press the green button");
+				    }
+				    break;
+		    case "b":
+				if(n_strikes == 0){
+				  System.out.println("Press the red button");
+				}
+				else if(n_strikes == 1){
+				  System.out.println("Press the green button");
+				}
+				else if (n_strikes == 2){
+				  System.out.println("Press the red button");
+				    }
+				    break;
+		    case "g":
+				if(n_strikes == 0){
+				  System.out.println("Press the yellow button");
+				}
+				else if(n_strikes == 1){
+				  System.out.println("Press the blue button");
+				}
+				else if (n_strikes == 2){
+				  System.out.println("Press the yellow button");
+				    }
+				    break;
+		    case "y":
+				if(n_strikes == 0){
+				  System.out.println("Press the green button");
+				}
+				else if(n_strikes == 1){
+				  System.out.println("Press the red button");
+				}
+				else if (n_strikes == 2){
+				  System.out.println("Press the blue button");
+				    }
+				    break;
+				}
           }
           
           else if (serial_number.has_vowel()){ 
             switch(response){
-              case "r":
-                if(n_strikes == 0){
-                  System.out.println("Press the blue button");
-                }
-                else if(n_strikes == 1){
-                  System.out.println("Press the red button");
-                }
-                else if (n_strikes == 2){
-                  System.out.println("Press the yellow button");
-                }
-              case "b":
-                if(n_strikes == 0){
-                  System.out.println("Press the yellow button");
-                }
-                else if(n_strikes == 1){
-                  System.out.println("Press the blue button");
-                }
-                else if (n_strikes == 2){
-                  System.out.println("Press the green button");
-                }
-              case "g":
-                if(n_strikes == 0){
-                  System.out.println("Press the green button");
-                }
-                else if(n_strikes == 1){
-                  System.out.println("Press the yellow button");
-                }
-                else if (n_strikes == 2){
-                  System.out.println("Press the blue button");
-                }
-              case "y":
-                if(n_strikes == 0){
-                  System.out.println("Press the red button");
-                }
-                else if(n_strikes == 1){
-                  System.out.println("Press the green button");
-                }
-                else if (n_strikes == 2){
-                  System.out.println("Press the red button");
-                }
+            case "r":
+            	if(n_strikes == 0){
+            		System.out.println("Press the blue button");
+            	}
+            	else if(n_strikes == 1){
+            		System.out.println("Press the red button");
+            	}
+            	else if (n_strikes == 2){
+            		System.out.println("Press the yellow button");
+            	}
+            case "b":
+            	if(n_strikes == 0){
+            		System.out.println("Press the yellow button");
+            	}
+            	else if(n_strikes == 1){
+            		System.out.println("Press the blue button");
+            	}
+            	else if (n_strikes == 2){
+            		System.out.println("Press the green button");
+            	}
+            case "g":
+            	if(n_strikes == 0){
+            		System.out.println("Press the green button");
+            	}
+            	else if(n_strikes == 1){
+            		System.out.println("Press the yellow button");
+            	}
+            	else if (n_strikes == 2){
+            		System.out.println("Press the blue button");
+            	}
+            case "y":
+            	if(n_strikes == 0){
+            		System.out.println("Press the red button");
+            	}
+            	else if(n_strikes == 1){
+            		System.out.println("Press the green button");
+            	}
+            	else if (n_strikes == 2){
+            		System.out.println("Press the red button");
+            	}
             }
           }
           System.out.println();
@@ -738,7 +736,6 @@ public class Bomb {
         initial : str
             The initial sequence of letters.
          */
-        String str = "";
         String[] validPasswords = {"about", "after", "again", "below", "could", "every", "first", "found", "great", "house", "large", "learn", "never", "other", "place", "plant", "point", "right", "small", "sound", "spell", "still", "study", "their", "there", "these", "thing", "think", "three", "water", "where", "which", "world", "would", "write"};
         ArrayList<String> newPossPasswords = new ArrayList<String>();
         passwordLetter = 0;
@@ -775,10 +772,7 @@ public class Bomb {
 	    	}
 	    	
         }
-    	
-        
-        
-        return str;
+        return newPossPasswords.get(0);
     }
     
     public boolean containsLetter(String initial, String word) {
