@@ -768,16 +768,12 @@ public class Bomb {
     	// MUST FIX
     	Scanner keyboard = new Scanner(System.in);
     	String currentLetters = initial;
-    	
         String[] validPasswords = {"about", "after", "again", "below", "could", "every", "first", "found", "great", "house", "large", "learn", "never", "other", "place", "plant", "point", "right", "small", "sound", "spell", "still", "study", "their", "there", "these", "thing", "think", "three", "water", "where", "which", "world", "would", "write"};
         ArrayList<String> newPossPasswords = new ArrayList<String>();
         
         for(String i: validPasswords) { newPossPasswords.add(i); }
 
-        if(!containsLetter(currentLetters, newPossPasswords.get(0))) { 
-        	System.out.println("YES");
-        	newPossPasswords.remove(0); 
-        }
+        
         //Goes through valid passwords
         while(newPossPasswords.size() > 1 && !currentLetters.equals("0")) {
         	int sizeArrList = newPossPasswords.size();
@@ -788,8 +784,12 @@ public class Bomb {
 	    			j=0;
 	    		}
 	    	}
+	    	if(!containsLetter(currentLetters, newPossPasswords.get(0))) {
+	        	newPossPasswords.remove(0); 
+	        }
 	    	if(newPossPasswords.size() > 1) {
 	    		passwordLetter++;
+	    		System.out.print("Possible words: ");
 		    	for(String o: newPossPasswords) { System.out.print(o + " "); }
 		    	System.out.println();
 	    		System.out.print("Enter the possible letters for position " + (passwordLetter+1) +  " (Enter '0' to exit): ");
