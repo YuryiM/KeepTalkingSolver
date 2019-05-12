@@ -10,8 +10,12 @@ public class SerialNumber {
     }
 
     public boolean has_vowel(){
-        if(number.toLowerCase().matches("[aeiou]"))
-            return true;
+    	String numberLower = number.toLowerCase();
+    	for(int i = 0; i < number.length(); i++) {
+    		if(numberLower.charAt(i) == 'a' || numberLower.charAt(i) == 'e' || numberLower.charAt(i) == 'i' || numberLower.charAt(i) == 'o' || numberLower.charAt(i) == 'u') {
+    			return true;
+    		}
+    	}
         return false;
     }
 

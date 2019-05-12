@@ -23,7 +23,7 @@ public class Bomb {
         has_parallel = false;
         frk = frkLit;
         car = carLit;
-        n_strikes = 2;
+        n_strikes = 0;
     }
 
     public Bomb(String sn, int bat, boolean para){
@@ -263,6 +263,7 @@ public class Bomb {
     }
 
     public String keypad(String[] keys){
+    	//IS SMILEY SUPPOSED TO BE "SMILE"?
         String[][] symbols = {{"q", "at", "lambda", "koppa", "an", "h", "moon"},
                               {"eh", "q", "moon", "loop", "star", "h", "que"},
                               {"copy", "butt", "loop", "zhe", "hoe", "lambda", "star"},
@@ -273,7 +274,7 @@ public class Bomb {
         int count = 0;
         for(int i = 0; i < symbols.length; i++){
           for(int k = 0; k < symbols[i].length; k++){
-            if(symbols[i][k].equals(keys[0]) || symbols[i][k].equals(keys[1]) || symbols[i][k].equals(keys[2]) || symbols[i][k].equals(keys[3])){
+            if(symbols[i][k].equals(keys[0].toLowerCase()) || symbols[i][k].equals(keys[1].toLowerCase()) || symbols[i][k].equals(keys[2].toLowerCase()) || symbols[i][k].equals(keys[3].toLowerCase())){
               count++;
               str += symbols[i][k];
               if(count != 4) str += ",";
@@ -283,6 +284,7 @@ public class Bomb {
             break;
           }
           else{
+        	str = "Press in this order: ";
             count = 0;
           }
         }
@@ -305,103 +307,104 @@ public class Bomb {
         String response = keyboard.nextLine();
         while(response.equals("b") || response.equals("g") || response.equals("r") || response.equals("y")){
           //Gets input for next loop
-          if(!serial_number.has_vowel()){
-            switch(response){
-		    case "r":
-				if(n_strikes == 0){
-				  System.out.println("Press the blue button");
-				}
-				else if(n_strikes == 1){
-				  System.out.println("Press the yellow button");
-				}
-				else if (n_strikes == 2){
-				  System.out.println("Press the green button");
-				    }
-				    break;
-		    case "b":
-				if(n_strikes == 0){
-				  System.out.println("Press the red button");
-				}
-				else if(n_strikes == 1){
-				  System.out.println("Press the green button");
-				}
-				else if (n_strikes == 2){
-				  System.out.println("Press the red button");
-				    }
-				    break;
-		    case "g":
-				if(n_strikes == 0){
-				  System.out.println("Press the yellow button");
-				}
-				else if(n_strikes == 1){
-				  System.out.println("Press the blue button");
-				}
-				else if (n_strikes == 2){
-				  System.out.println("Press the yellow button");
-				    }
-				    break;
-		    case "y":
-				if(n_strikes == 0){
-				  System.out.println("Press the green button");
-				}
-				else if(n_strikes == 1){
-				  System.out.println("Press the red button");
-				}
-				else if (n_strikes == 2){
-				  System.out.println("Press the blue button");
-				    }
-				    break;
-				}
-          }
-          
-          else if (serial_number.has_vowel()){ 
-            switch(response){
-            case "r":
-            	if(n_strikes == 0){
-            		System.out.println("Press the blue button");
-            	}
-            	else if(n_strikes == 1){
-            		System.out.println("Press the red button");
-            	}
-            	else if (n_strikes == 2){
-            		System.out.println("Press the yellow button");
-            	}
-            case "b":
-            	if(n_strikes == 0){
-            		System.out.println("Press the yellow button");
-            	}
-            	else if(n_strikes == 1){
-            		System.out.println("Press the blue button");
-            	}
-            	else if (n_strikes == 2){
-            		System.out.println("Press the green button");
-            	}
-            case "g":
-            	if(n_strikes == 0){
-            		System.out.println("Press the green button");
-            	}
-            	else if(n_strikes == 1){
-            		System.out.println("Press the yellow button");
-            	}
-            	else if (n_strikes == 2){
-            		System.out.println("Press the blue button");
-            	}
-            case "y":
-            	if(n_strikes == 0){
-            		System.out.println("Press the red button");
-            	}
-            	else if(n_strikes == 1){
-            		System.out.println("Press the green button");
-            	}
-            	else if (n_strikes == 2){
-            		System.out.println("Press the red button");
-            	}
+	        if(serial_number.has_vowel()) {
+	        	if(response.equals("r")) {
+	        		if(n_strikes == 0) {
+	        			System.out.println("Press the blue button");
+	        		}
+	        		else if(n_strikes == 1) {
+	        			System.out.println("Press the yellow button");
+	        		}
+	        		else if(n_strikes == 2) {
+	        			System.out.println("Press the green button");
+	        		}
+	        	}
+	        	else if(response.equals("b")) {
+	        		if(n_strikes == 0) {
+	        			System.out.println("Press the red button");
+	        		}
+	        		else if(n_strikes == 1) {
+	        			System.out.println("Press the green button");
+	        		}
+	        		else if(n_strikes == 2) {
+	        			System.out.println("Press the red button");
+	        		} 
+	        	}
+	        	else if(response.equals("g")) {
+	        		if(n_strikes == 0) {
+	        			System.out.println("Press the yellow button");
+	        		}
+	        		else if(n_strikes == 1) {
+	        			System.out.println("Press the blue button");
+	        		}
+	        		else if(n_strikes == 2) {
+	        			System.out.println("Press the yellow button");
+	        		}
+	        	}
+	        	else if(response.equals("y")) {
+	        		if(n_strikes == 0) {
+	        			System.out.println("Press the green button");
+	        		}
+	        		else if(n_strikes == 1) {
+	        			System.out.println("Press the red button");
+	        		}
+	        		else if(n_strikes == 2) {
+	        			System.out.println("Press the blue button");
+	        		}
+	        	}
             }
-          }
-          System.out.println();
-          System.out.print("Enter the color: ");
-          response = keyboard.nextLine();
+	        //If you do not have a vowel
+            else if (!serial_number.has_vowel()){ 
+            	if(response.equals("r")) {
+	        		if(n_strikes == 0) {
+	        			System.out.println("Press the blue button");
+	        		}
+	        		else if(n_strikes == 1) {
+	        			System.out.println("Press the red button");
+	        		}
+	        		else if(n_strikes == 2) {
+	        			System.out.println("Press the yellow button");
+	        		}
+	        	}
+	        	else if(response.equals("b")) {
+	        		if(n_strikes == 0) {
+	        			System.out.println("Press the yellow button");
+	        		}
+	        		else if(n_strikes == 1) {
+	        			System.out.println("Press the blue button");
+	        		}
+	        		else if(n_strikes == 2) {
+	        			System.out.println("Press the green button");
+	        		} 
+	        	}
+	        	else if(response.equals("g")) {
+	        		if(n_strikes == 0) {
+	        			System.out.println("Press the green button");
+	        		}
+	        		else if(n_strikes == 1) {
+	        			System.out.println("Press the yellow button");
+	        		}
+	        		else if(n_strikes == 2) {
+	        			System.out.println("Press the blue button");
+	        		}
+	        	}
+	        	else if(response.equals("y")) {
+	        		if(n_strikes == 0) {
+	        			System.out.println("Press the red button");
+	        		}
+	        		else if(n_strikes == 1) {
+	        			System.out.println("Press the green button");
+	        		}
+	        		else if(n_strikes == 2) {
+	        			System.out.println("Press the red button");
+	        		}
+	        	}
+            }
+            System.out.println();
+            System.out.print("Enter the color: ");
+            response = keyboard.nextLine();
         }
+        
         
     }
 
@@ -413,6 +416,7 @@ public class Bomb {
         The expert would then speak a list of the words, one at a time,
         until a match is found. The diffuser presses the matching button.
          */
+    	//Must fix
     	Scanner keyboard = new Scanner(System.in);
         System.out.print("Enter the displayed word (Enter '0' to exit): ");
         //Button text
@@ -577,6 +581,7 @@ public class Bomb {
     	Scanner keyboard = new Scanner(System.in);
     	int stage = 1;
     	int stageOneNumber = 0, stageTwoNumber = 0, stageThreeNumber = 0, stageFourNumber = 0;
+    	int stageOnePos = 0, stageTwoPos = 0, stageThreePos = 0, stageFourPos = 0;
     	while(stage < 6) {
     		switch(stage) {
 			case 1:
@@ -588,24 +593,28 @@ public class Bomb {
 					System.out.println("Press the button in the second position");
 					System.out.print("Enter the number in the second position: ");
 					stageOneNumber = keyboard.nextInt();
+					stageOnePos = 2;
 					stage++;
 					break;
 				case 2:
 					System.out.println("Press the button in the second position");
 					System.out.print("Enter the number in the second position: ");
 					stageOneNumber = keyboard.nextInt();
+					stageOnePos = 2;
 					stage++;
 					break;
 				case 3:
 					System.out.println("Press the button in the third position");
 					System.out.print("Enter the number in the third position: ");
 					stageOneNumber = keyboard.nextInt();
+					stageOnePos = 3;
 					stage++;
 					break;
 				case 4:
 					System.out.println("Press the button in the fourth position");
 					System.out.print("Enter the number in the fourth position: ");
 					stageOneNumber = keyboard.nextInt();
+					stageOnePos = 4;
 					stage++;
 					break;
 				}
@@ -617,22 +626,29 @@ public class Bomb {
 				case 1:
 					System.out.println("Press the button labeled 4");
 					stageTwoNumber = 4;
+					System.out.print("What position is it in? (Use numbers): ");
+					stageTwoPos = keyboard.nextInt();
 					stage++;
 					break;
 				case 2:
-					System.out.println("Press the button labeled " + stageOneNumber);
-					stageTwoNumber = stageOneNumber;
+					System.out.println("Press the button in position " + stageOnePos);
+					System.out.print("Enter the number in the position: ");
+					stageTwoNumber = keyboard.nextInt();
+					stageTwoPos = stageOnePos;
 					stage++;
 					break;
 				case 3:
 					System.out.println("Press the button in the first position");
 					System.out.print("Enter the number in the first position: ");
 					stageTwoNumber = keyboard.nextInt();
+					stageTwoPos = 1;
 					stage++;
 					break;
 				case 4:
-					System.out.println("Press the button labeled " + stageOneNumber);
-					stageTwoNumber = stageOneNumber;
+					System.out.println("Press the button in position " + stageOnePos);
+					System.out.print("Enter the number in the position: ");
+					stageTwoNumber = keyboard.nextInt();
+					stageTwoPos = stageOnePos;
 					stage++;
 					break;
 				}
@@ -644,15 +660,20 @@ public class Bomb {
 				case 1:
 					System.out.println("Press the button labeled " + stageTwoNumber);
 					stageThreeNumber = stageTwoNumber;
+					System.out.print("What position is it in? (Use numbers): ");
+					stageThreePos = keyboard.nextInt();
 					stage++;
 					break;
 				case 2:
 					System.out.println("Press the button labeled " + stageOneNumber);
 					stageThreeNumber = stageOneNumber;
+					System.out.print("What position is it in? (Use numbers): ");
+					stageThreePos = keyboard.nextInt();
 					stage++;
 					break;
 				case 3:
 					System.out.println("Press the button in the third position");
+					stageThreePos = 3;
 					System.out.print("Enter the number in the third position: ");
 					stageThreeNumber = keyboard.nextInt();
 					stage++;
@@ -660,6 +681,8 @@ public class Bomb {
 				case 4:
 					System.out.println("Press the button labeled 4");
 					stageThreeNumber = 4;
+					System.out.print("What position is it in? (Use numbers): ");
+					stageThreePos = keyboard.nextInt();
 					stage++;
 					break;
 				}
@@ -669,27 +692,33 @@ public class Bomb {
 				System.out.println("----------");
 				switch(getDisplayNum()) {
 				case 1:
-					System.out.println("Press the button labeled " + stageOneNumber);
-					stageFourNumber = stageOneNumber;
+					System.out.println("Press the button in position " + stageOnePos);
+					stageFourPos = stageOnePos;
+					System.out.print("Enter the number in the position: ");
+					stageFourNumber = keyboard.nextInt();
 					stage++;
 					break;
 				case 2:
 					System.out.println("Press the button in the first position");
+					stageFourPos = 1;
 					System.out.print("Enter the number in the first position: ");
 					stageFourNumber = keyboard.nextInt();
 					stage++;
 					break;
 				case 3:
-					System.out.println("Press the button labeled " + stageTwoNumber);
-					stageFourNumber = stageTwoNumber;
+					System.out.println("Press the button in position " + stageTwoPos);
+					stageFourPos = stageTwoPos;
+					System.out.print("Enter the number in the position: ");
+					stageFourNumber = keyboard.nextInt();
 					stage++;
 					break;
 				case 4:
-					System.out.println("Press the button labeled " + stageTwoNumber);
-					stageFourNumber = stageTwoNumber;
+					System.out.println("Press the button in position " + stageTwoPos);
+					stageFourPos = stageTwoPos;
+					System.out.print("Enter the number in the position: ");
+					stageFourNumber = keyboard.nextInt();
 					stage++;
 					break;
-					
 				}
 			case 5:
 				System.out.println("-----------");
@@ -738,12 +767,19 @@ public class Bomb {
          */
     	// MUST FIX
     	Scanner keyboard = new Scanner(System.in);
+    	String currentLetters = initial;
+    	
         String[] validPasswords = {"about", "after", "again", "below", "could", "every", "first", "found", "great", "house", "large", "learn", "never", "other", "place", "plant", "point", "right", "small", "sound", "spell", "still", "study", "their", "there", "these", "thing", "think", "three", "water", "where", "which", "world", "would", "write"};
         ArrayList<String> newPossPasswords = new ArrayList<String>();
+        
         for(String i: validPasswords) { newPossPasswords.add(i); }
-        String currentLetters = initial;
+
+        if(!containsLetter(currentLetters, newPossPasswords.get(0))) { 
+        	System.out.println("YES");
+        	newPossPasswords.remove(0); 
+        }
         //Goes through valid passwords
-        while(newPossPasswords.size() > 1 && !currentLetters.equals("0") && passwordLetter < 5) {
+        while(newPossPasswords.size() > 1 && !currentLetters.equals("0")) {
         	int sizeArrList = newPossPasswords.size();
 	    	for(int j = 0; j < sizeArrList; j++) {
 	    		if(!containsLetter(currentLetters, newPossPasswords.get(j))) {
