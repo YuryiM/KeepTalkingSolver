@@ -236,7 +236,7 @@ public class Bomb {
 
     public void simon(){
         Scanner keyboard = new Scanner(System.in);
-        System.out.print("Enter the color: ");
+        System.out.print("Enter the color (Enter '0' to exit): ");
         String response = keyboard.nextLine();
         while(response.equals("b") || response.equals("g") || response.equals("r") || response.equals("y")){
 	        if(serial_number.has_vowel()) {
@@ -474,6 +474,7 @@ public class Bomb {
         			System.out.println("YOU'RE, NEXT, U, UR, HOLD, DONE, UH UH, WHAT?, UH HUH, YOU, LIKE, SURE, YOU ARE, YOUR");
         			break;
         	}
+        	System.out.println("----------------------------------------------------");
         	System.out.print("Enter the displayed word (Enter '0' to exit): ");
         	response = keyboard.nextLine().toLowerCase();
         }
