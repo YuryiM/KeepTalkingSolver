@@ -7,7 +7,7 @@ public class Bomb {
     private boolean frk;
     private boolean car;
     private int n_strikes;
-    private int passwordLetter = 0; //For the password module
+    private int passwordLetter = 0; 
 
     public Bomb(String sn, int bat){
         serial_number = new SerialNumber(sn);
@@ -40,30 +40,9 @@ public class Bomb {
     }
 
     public String wires(String wires){
-        /*
-        Solve a *Wires* module.
-        Parameters
-        ----------
-        wires : str
-            A string containing the code for the wire colours.
-            **Colours :**
-            - black : k
-            - blue : b
-            - red : r
-            - white : w
-            - yellow : y
-            Therefore, a module containing three modules with white, blue, and
-            black, would be input as "wbk".
-        Returns
-        -------
-        to_cut : str
-            The wire to cut, ordinal from left to right starting with one.
-        */
-
         int numWires = wires.length();
         int lastSerialNumDigit = serial_number.digitString.charAt(serial_number.digitString.length() - 1) - '0';
         if(numWires == 3){
-          //Returns which wire to cut
           if(!wires.contains("r")){
             return "Cut the second wire";
           }
@@ -83,20 +62,16 @@ public class Bomb {
           int numYellowWires = 0;
           
           for(int i = 0; i < numWires; i++){
-            //Counts number of red wires
             if(wires.charAt(i) == 'r'){
               numRedWires++;
             }
-            //Counts number of blue wires
             else if (wires.charAt(i) == 'b'){
               numBlueWires++;
             }
-            //Counts number of yellow wires
             else if (wires.charAt(i) == 'y'){
               numYellowWires++;
             }
           }
-          //Returns which wire to cut
           if(numRedWires > 1 && (lastSerialNumDigit % 2 == 1)){
         	System.out.println(lastSerialNumDigit);
             return "Cut the last red wire";
@@ -120,20 +95,16 @@ public class Bomb {
           int numRedWires = 0;
 
           for(int i = 0; i < numWires; i++){
-            //Counts number of yellow wires
             if(wires.charAt(i) == 'y'){
               numYellowWires++;
             }
-            //Counts number of black wires
             else if (wires.charAt(i) == 'k'){
               numBlackWires++;
             }
-            //Counts number of red wires
             else if (wires.charAt(i) == 'r'){
               numRedWires++;
             }
           }
-          //Returns which wire to cut
           if(wires.charAt(4) == 'k' && (lastSerialNumDigit % 2 == 1)){
             return "Cut the fourth wire";
           }
@@ -153,15 +124,12 @@ public class Bomb {
           int numRedWires = 0;
 
           for(int i = 0; i < numWires; i++){
-            //Counts number of yellow wires
             if(wires.charAt(i) == 'y'){
               numYellowWires++;
             }
-            //Counts number of white wires
             else if (wires.charAt(i) == 'w'){
               numWhiteWires++;
             }
-            //Counts number of red wires
             else if (wires.charAt(i) == 'r'){
               numRedWires++;
             }
@@ -184,25 +152,6 @@ public class Bomb {
     }
 
     public String button(String text, String color){
-        /*
-        Solve a *Button* module.
-        Parameters
-        ----------
-        text : str
-            The text on the button.
-        colour : char
-            The colour of the button.
-            **Colours :**
-            - blue : b
-            - red : r
-            - white : w
-            - yellow : y
-            - none : n
-        Returns
-        -------
-        str
-            Instruction for the diffuser
-         */
     	Scanner keyboard = new Scanner(System.in);
 	    color = color.toLowerCase();
 	    text = text.toLowerCase();
@@ -242,12 +191,6 @@ public class Bomb {
     }
 
     public String release(String color){
-        /*
-        Determine the number at which to release the button if HOLD.
-            Returns
-            -------
-            The number at which to release the button.
-         */
         if(color.equals("b")){
           return "Release when the countdown timer has a 4 in any position";
         }
@@ -292,21 +235,10 @@ public class Bomb {
     }
 
     public void simon(){
-        /*
-        Solve a *Simon Says* module.
-        Run the solver, then input a colour every time.
-        **Colours :**
-        - blue : b
-        - green : g
-        - red : r
-        - yellow : y
-         */
-        //Ask for input
         Scanner keyboard = new Scanner(System.in);
         System.out.print("Enter the color: ");
         String response = keyboard.nextLine();
         while(response.equals("b") || response.equals("g") || response.equals("r") || response.equals("y")){
-          //Gets input for next loop
 	        if(serial_number.has_vowel()) {
 	        	if(response.equals("r")) {
 	        		if(n_strikes == 0) {
@@ -353,7 +285,6 @@ public class Bomb {
 	        		}
 	        	}
             }
-	        //If you do not have a vowel
             else if (!serial_number.has_vowel()){ 
             	if(response.equals("r")) {
 	        		if(n_strikes == 0) {
@@ -409,17 +340,9 @@ public class Bomb {
     }
 
     public void whos(){
-        /*
-        Solve a *Who's on First* problem.
-        Run the solver. On each iteration, input the letters on the display.
-        The diffuser shall then relay the label of the appropriate button.
-        The expert would then speak a list of the words, one at a time,
-        until a match is found. The diffuser presses the matching button.
-         */
-    	//Must fix
     	Scanner keyboard = new Scanner(System.in);
         System.out.print("Enter the displayed word (Enter '0' to exit): ");
-        //Button text
+        
         String p1 = "Enter the text on the top left button: ";
         String p2 =	"Enter the text on the top right button: ";
         String p3 = "Enter the text on the middle left button: ";
@@ -566,18 +489,6 @@ public class Bomb {
     }
 
     public void memory(){
-        /*
-        Solve a *Memory* module.
-        Run the solver. The diffuser should relay the number on the screen.
-        The expert instructs with regards to the button to be pressed.
-        Note that this can be either the label, or the position of the button.
-        Once a button is pressed, the diffuser confirms its number and
-        position, which is then input into the solver.
-         */
-    	
-    	/* 
-    	 * THE BUTTON POSITIONS CHANGE WITH EVERY STAGE
-    	 */
     	Scanner keyboard = new Scanner(System.in);
     	int stage = 1;
     	int stageOneNumber = 0, stageTwoNumber = 0, stageThreeNumber = 0, stageFourNumber = 0;
@@ -755,17 +666,6 @@ public class Bomb {
 	}
 
     public String passwords(String initial){
-        /*
-        Solve a *Passwords* module.
-        Run the solver. For each position, input all the possible letters
-        which can be entered. The expert would obtain a shrinking list
-        of possible passwords.
-        Parameters
-        ----------
-        initial : str
-            The initial sequence of letters.
-         */
-    	// MUST FIX
     	Scanner keyboard = new Scanner(System.in);
     	String currentLetters = initial;
         String[] validPasswords = {"about", "after", "again", "below", "could", "every", "first", "found", "great", "house", "large", "learn", "never", "other", "place", "plant", "point", "right", "small", "sound", "spell", "still", "study", "their", "there", "these", "thing", "think", "three", "water", "where", "which", "world", "would", "write"};
@@ -773,8 +673,6 @@ public class Bomb {
         
         for(String i: validPasswords) { newPossPasswords.add(i); }
 
-        
-        //Goes through valid passwords
         while(newPossPasswords.size() > 1 && !currentLetters.equals("0")) {
         	int sizeArrList = newPossPasswords.size();
 	    	for(int j = 0; j < sizeArrList; j++) {
