@@ -707,6 +707,7 @@ public class Bomb {
     	}
     	return false;
     }
+    
     public void sequences(){
         /*
         Solve a *Wire Sequences* module.
@@ -717,6 +718,137 @@ public class Bomb {
         - black : k
         - red : r
          */
+    	Scanner keyboard = new Scanner(System.in);
+    	int redCount = 0, blueCount = 0, blackCount = 0;
+    	System.out.println("---------------------------------------------------------");
+		for(int i = 1; i <= 12; i++) {
+			System.out.println("Enter the color and letter wire " + i + " is connected to (Press enter to skip)");
+			System.out.println("Ex. \"rc\" or \"bb\"");
+			String wire_connection = keyboard.nextLine().toLowerCase();
+			//Determines wire number
+			if(wire_connection.equals("")) {
+				continue;
+			}
+			else {
+				switch(wire_connection.charAt(0)) {
+    			case 'r':
+    				redCount++;
+    				System.out.println(toCut(redCount, wire_connection.charAt(1), 'r'));
+    				break;
+    			case 'b':
+    				blueCount++;
+    				System.out.println(toCut(blueCount, wire_connection.charAt(1), 'b'));
+    				break;
+    			case 'k':
+    				blackCount++;
+    				System.out.println(toCut(blackCount, wire_connection.charAt(1), 'k'));
+    			}
+			}
+			
+			System.out.println("---------------------------------------------------------");
+		}
     	
     }
+    
+   private String toCut(int wireCount, char wireConnection, char wireColor) {
+	   String cut = "Cut the wire";
+	   String noCut = "Do not cut the wire";
+	   switch(wireColor) {
+		case 'r':
+			switch(wireCount) {
+			case 1:
+				if(wireConnection == 'c') { return cut; }
+				break;
+			case 2:
+				if(wireConnection == 'b') { return cut; }
+				break;
+			case 3:
+				if(wireConnection == 'a') { return cut; }
+				break;
+			case 4:
+				if(wireConnection == 'a' || wireConnection == 'c') { return cut; }
+				break;
+			case 5:
+				if(wireConnection == 'b') { return cut; }
+				break;
+			case 6:
+				if(wireConnection == 'a' || wireConnection == 'c') { return cut; }
+				break;
+			case 7:
+				if(wireConnection == 'a' || wireConnection == 'b' || wireConnection == 'c') { return cut; }
+				break;
+			case 8:
+				if(wireConnection == 'a' || wireConnection == 'b') { return cut; }
+				break;
+			case 9:
+				if(wireConnection == 'b') { return cut; }
+				break;
+			}
+			break;
+		case 'b':
+			switch(wireCount) {
+			case 1:
+				if(wireConnection == 'b') { return cut; }
+				break;
+			case 2:
+				if(wireConnection == 'a' || wireConnection == 'c') { return cut; }
+				break;
+			case 3:
+				if(wireConnection == 'b') { return cut; }
+				break;
+			case 4:
+				if(wireConnection == 'a') { return cut; }
+				break;
+			case 5:
+				if(wireConnection == 'b') { return cut; }
+				break;
+			case 6:
+				if(wireConnection == 'b' || wireConnection == 'c') { return cut; }
+				break;
+			case 7:
+				if(wireConnection == 'c') { return cut; }
+				break;
+			case 8:
+				if(wireConnection == 'a' || wireConnection == 'c') { return cut; }
+				break;
+			case 9:
+				if(wireConnection == 'a') { return cut; }
+				break;
+			}
+			break;
+		case 'k':
+			switch(wireCount) {
+			case 1:
+				if(wireConnection == 'a' || wireConnection == 'b' || wireConnection == 'c') { return cut; }
+				break;
+			case 2:
+				if(wireConnection == 'a' || wireConnection == 'c') { return cut; }
+				break;
+			case 3:
+				if(wireConnection == 'b') { return cut; }
+				break;
+			case 4:
+				if(wireConnection == 'a' || wireConnection == 'c') { return cut; }
+				break;
+			case 5:
+				if(wireConnection == 'b') { return cut; }
+				break;
+			case 6:
+				if(wireConnection == 'b' || wireConnection == 'c') { return cut; }
+				break;
+			case 7:
+				if(wireConnection == 'a' || wireConnection == 'b') { return cut; }
+				break;
+			case 8:
+				if(wireConnection == 'c') { return cut; }
+				break;
+			case 9:
+				if(wireConnection == 'c') { return cut; }
+				break;
+			}
+			
+			break;
+		}
+	   return noCut;
+   }
 }
