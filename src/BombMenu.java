@@ -147,6 +147,7 @@ public class BombMenu {
             validAnswer = true;
             System.out.println("Wires Module Loaded...");
             System.out.println("Please enter the color sequence of the wires");
+            System.out.println("Enter '0' to exit to menu");
             try {
                 colors = scanner.next();
             } catch (Exception ex) {

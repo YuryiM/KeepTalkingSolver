@@ -721,15 +721,21 @@ public class Bomb {
     	Scanner keyboard = new Scanner(System.in);
     	int redCount = 0, blueCount = 0, blackCount = 0;
     	System.out.println("---------------------------------------------------------");
+    	System.out.println("Press enter to skip the wire, '0' to exit to menu");
+		System.out.println("Enter the color followed by the letter connection");
+		System.out.println("Ex. \"rc\" or \"bb\"");
+    	System.out.println("---------------------------------------------------------");
 		for(int i = 1; i <= 12; i++) {
-			System.out.println("Enter the color and letter wire " + i + " is connected to (Press enter to skip)");
-			System.out.println("Ex. \"rc\" or \"bb\"");
+			System.out.println("Enter the color and letter wire " + i + " is connected to");
 			String wire_connection = keyboard.nextLine().toLowerCase();
 			//Determines wire number
 			if(wire_connection.equals("")) {
 				continue;
 			}
-			else {
+			else if(wire_connection.equals("0")) {
+				break;
+			}
+			else if((wire_connection.charAt(0) == 'r' || wire_connection.charAt(0) == 'b' || wire_connection.charAt(0) == 'k') && ((wire_connection.charAt(1) == 'a' || wire_connection.charAt(1) == 'b' || wire_connection.charAt(1) == 'c'))){
 				switch(wire_connection.charAt(0)) {
     			case 'r':
     				redCount++;
@@ -744,6 +750,10 @@ public class Bomb {
     				System.out.println(toCut(blackCount, wire_connection.charAt(1), 'k'));
     			}
 			}
+			else {
+				System.out.println("Not a valid response");
+				i--;
+			}
 			
 			System.out.println("---------------------------------------------------------");
 		}
@@ -752,7 +762,6 @@ public class Bomb {
     
    private String toCut(int wireCount, char wireConnection, char wireColor) {
 	   String cut = "Cut the wire";
-	   String noCut = "Do not cut the wire";
 	   switch(wireColor) {
 		case 'r':
 			switch(wireCount) {
@@ -849,6 +858,6 @@ public class Bomb {
 			
 			break;
 		}
-	   return noCut;
+	   return "Do not cut the wire";
    }
 }
