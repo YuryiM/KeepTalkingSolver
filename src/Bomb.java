@@ -42,156 +42,183 @@ public class Bomb {
     public String wires(String wires){
         int numWires = wires.length();
         int lastSerialNumDigit = serial_number.digitString.charAt(serial_number.digitString.length() - 1) - '0';
-        if(numWires == 3){
-          if(!wires.contains("r")){
-            return "Cut the second wire";
-          }
-          else if(wires.lastIndexOf('w') == numWires-1){
-            return "Cut the last wire";
-          }
-          else if (wires.indexOf('b') != wires.lastIndexOf('b')){
-            return "Cut the last blue wire";
-          }
-          else{
-            return "Cut the last wire";
-          }
+        boolean validEntry = true;
+        for(int i = 0; i < wires.length(); i++) {
+        	if((wires.charAt(i) == 'k' || wires.charAt(i) == 'b' || wires.charAt(i) == 'r' || wires.charAt(i) == 'y' || wires.charAt(i) == 'w')) {
+        		continue;
+        	}
+        	else {
+        		validEntry = false;
+        	}
         }
-        else if(numWires == 4){
-          int numRedWires = 0;
-          int numBlueWires = 0;
-          int numYellowWires = 0;
-          
-          for(int i = 0; i < numWires; i++){
-            if(wires.charAt(i) == 'r'){
-              numRedWires++;
-            }
-            else if (wires.charAt(i) == 'b'){
-              numBlueWires++;
-            }
-            else if (wires.charAt(i) == 'y'){
-              numYellowWires++;
-            }
-          }
-          if(numRedWires > 1 && (lastSerialNumDigit % 2 == 1)){
-        	System.out.println(lastSerialNumDigit);
-            return "Cut the last red wire";
-          }
-          else if (wires.lastIndexOf('y') == wires.length()-1 && numRedWires == 0){
-            return "Cut the first wire";
-          }
-          else if (numBlueWires == 1){
-            return "Cut the first wire";
-          }
-          else if (numYellowWires > 1){
-            return "Cut the last wire";
-          }
-          else{
-            return "Cut the second wire";
-          }
-        }
-        else if(numWires == 5){
-          int numYellowWires = 0;
-          int numBlackWires = 0;
-          int numRedWires = 0;
+        if(validEntry && wires.length() >= 3) {
+        	if(numWires == 3){
+                if(!wires.contains("r")){
+                  return "Cut the second wire";
+                }
+                else if(wires.lastIndexOf('w') == numWires-1){
+                  return "Cut the last wire";
+                }
+                else if (wires.indexOf('b') != wires.lastIndexOf('b')){
+                  return "Cut the last blue wire";
+                }
+                else{
+                  return "Cut the last wire";
+                }
+              }
+              else if(numWires == 4){
+                int numRedWires = 0;
+                int numBlueWires = 0;
+                int numYellowWires = 0;
+                
+                for(int i = 0; i < numWires; i++){
+                  if(wires.charAt(i) == 'r'){
+                    numRedWires++;
+                  }
+                  else if (wires.charAt(i) == 'b'){
+                    numBlueWires++;
+                  }
+                  else if (wires.charAt(i) == 'y'){
+                    numYellowWires++;
+                  }
+                }
+                if(numRedWires > 1 && (lastSerialNumDigit % 2 == 1)){
+              	System.out.println(lastSerialNumDigit);
+                  return "Cut the last red wire";
+                }
+                else if (wires.lastIndexOf('y') == wires.length()-1 && numRedWires == 0){
+                  return "Cut the first wire";
+                }
+                else if (numBlueWires == 1){
+                  return "Cut the first wire";
+                }
+                else if (numYellowWires > 1){
+                  return "Cut the last wire";
+                }
+                else{
+                  return "Cut the second wire";
+                }
+              }
+              else if(numWires == 5){
+                int numYellowWires = 0;
+                int numBlackWires = 0;
+                int numRedWires = 0;
 
-          for(int i = 0; i < numWires; i++){
-            if(wires.charAt(i) == 'y'){
-              numYellowWires++;
-            }
-            else if (wires.charAt(i) == 'k'){
-              numBlackWires++;
-            }
-            else if (wires.charAt(i) == 'r'){
-              numRedWires++;
-            }
-          }
-          if(wires.charAt(4) == 'k' && (lastSerialNumDigit % 2 == 1)){
-            return "Cut the fourth wire";
-          }
-          else if (numRedWires == 1 && numYellowWires > 1){
-            return "Cut the first wire";
-          }
-          else if (numBlackWires == 0){
-            return "Cut the second wire";
-          }
-          else{
-            return "Cut the first wire";
-          }
-        }
-        else if(numWires == 6){
-          int numYellowWires = 0;
-          int numWhiteWires = 0;
-          int numRedWires = 0;
+                for(int i = 0; i < numWires; i++){
+                  if(wires.charAt(i) == 'y'){
+                    numYellowWires++;
+                  }
+                  else if (wires.charAt(i) == 'k'){
+                    numBlackWires++;
+                  }
+                  else if (wires.charAt(i) == 'r'){
+                    numRedWires++;
+                  }
+                }
+                if(wires.charAt(4) == 'k' && (lastSerialNumDigit % 2 == 1)){
+                  return "Cut the fourth wire";
+                }
+                else if (numRedWires == 1 && numYellowWires > 1){
+                  return "Cut the first wire";
+                }
+                else if (numBlackWires == 0){
+                  return "Cut the second wire";
+                }
+                else{
+                  return "Cut the first wire";
+                }
+              }
+              else if(numWires == 6){
+                int numYellowWires = 0;
+                int numWhiteWires = 0;
+                int numRedWires = 0;
 
-          for(int i = 0; i < numWires; i++){
-            if(wires.charAt(i) == 'y'){
-              numYellowWires++;
-            }
-            else if (wires.charAt(i) == 'w'){
-              numWhiteWires++;
-            }
-            else if (wires.charAt(i) == 'r'){
-              numRedWires++;
-            }
-          }
+                for(int i = 0; i < numWires; i++){
+                  if(wires.charAt(i) == 'y'){
+                    numYellowWires++;
+                  }
+                  else if (wires.charAt(i) == 'w'){
+                    numWhiteWires++;
+                  }
+                  else if (wires.charAt(i) == 'r'){
+                    numRedWires++;
+                  }
+                }
 
-          if(numYellowWires == 0 && (lastSerialNumDigit % 2 == 1)){
-            return "Cut the third wire";
-          }
-          else if (numYellowWires == 1 && numWhiteWires > 1){
-            return "Cut the fourth wire";
-          }
-          else if (numRedWires == 0){
-            return "Cut the last wire";
-          }
-          else{
-            return "Cut the fourth wire";
-          }
+                if(numYellowWires == 0 && (lastSerialNumDigit % 2 == 1)){
+                  return "Cut the third wire";
+                }
+                else if (numYellowWires == 1 && numWhiteWires > 1){
+                  return "Cut the fourth wire";
+                }
+                else if (numRedWires == 0){
+                  return "Cut the last wire";
+                }
+                else{
+                  return "Cut the fourth wire";
+                }
+              }
         }
-		return "Not a valid number of wires";
+        return "Not a valid entry";
+        
+		
     }
 
     public String button(String text, String color){
     	Scanner keyboard = new Scanner(System.in);
 	    color = color.toLowerCase();
 	    text = text.toLowerCase();
-        if(color.equals("b") && text.equals("abort")){
-          System.out.println("Hold the button");
-          System.out.print("Enter the color of the strip: ");
-          String response = keyboard.nextLine().toLowerCase();
-          return release(response);
-        }
-        else if(n_batteries > 1 && text.equals("detonate")){
-          return "Press and immediately release";
-        }
-        else if (color.equals("w") && car){
-          System.out.println("Hold the button");
-          System.out.println("Enter the color of the strip: ");
-          String response = keyboard.nextLine().toLowerCase();
-          return release(response);
-        }
-        else if(n_batteries > 2 && frk){
-          return "Press and immediately release";
-        }
-        else if(color.equals("y")){
-	      System.out.println("Hold the button");
-	      System.out.println("Enter the color of the strip: ");
-	      String response = keyboard.nextLine().toLowerCase();
-	      return release(response);
-        }
-        else if(color.equals("r") && text.equals("hold")){
-          return "Press and immediately release";
-        }
-        else{
-          System.out.println("Hold the button");
-          System.out.println("Enter the color of the strip: ");
-          String response = keyboard.nextLine().toLowerCase();
-          return release(response);
-        }
+	    if((text.equals("abort") || text.equals("detonate") || text.equals("hold")) && (color.equals("b") || color.equals("w") || color.equals("y") || color.equals("r"))) { 
+	    	if(color.equals("b") && text.equals("abort")){
+	            System.out.println("Hold the button");
+	            System.out.println("Enter '0' to exit to menu");
+	            System.out.print("Enter the color of the strip: ");
+	            String response = keyboard.nextLine().toLowerCase();
+	            return release(response);
+	          }
+	          else if(n_batteries > 1 && text.equals("detonate")){
+	            return "Press and immediately release";
+	          }
+	          else if (color.equals("w") && car){
+	            System.out.println("Hold the button");
+	            System.out.println("Enter '0' to exit to menu");
+	            System.out.println("Enter the color of the strip: ");
+	            String response = keyboard.nextLine().toLowerCase();
+	            return release(response);
+	          }
+	          else if(n_batteries > 2 && frk){
+	            return "Press and immediately release";
+	          }
+	          else if(color.equals("y")){
+	  	      System.out.println("Hold the button");
+	  	      System.out.println("Enter '0' to exit to menu");
+	  	      System.out.println("Enter the color of the strip: ");
+	  	      String response = keyboard.nextLine().toLowerCase();
+	  	      return release(response);
+	          }
+	          else if(color.equals("r") && text.equals("hold")){
+	            return "Press and immediately release";
+	          }
+	          else{
+	            System.out.println("Hold the button");
+	            System.out.println("Enter '0' to exit to menu");
+	            System.out.println("Enter the color of the strip: ");
+	            String response = keyboard.nextLine().toLowerCase();
+	            return release(response);
+	          }
+	    }
+	    else {
+	    	return "Not a valid entry";
+	    }
+        
     }
 
     public String release(String color){
-        if(color.equals("b")){
+    	
+    	if(color.equals("0")) {
+    		return "";
+    	}
+    	else if(color.equals("b")){
           return "Release when the countdown timer has a 4 in any position";
         }
         else if(color.equals("w")){
@@ -387,96 +414,101 @@ public class Bomb {
         		}
         	}
         	String buttonText = keyboard.nextLine().toLowerCase();
-        	System.out.println("Push the first button that appears in the list: ");
-        	switch(buttonText) {
-    		case "ready":
-    			System.out.println("YES, OKAY, WHAT, MIDDLE, LEFT, PRESS, RIGHT, BLANK, READY, NO, FIRST, UHHH, NOTHING, WAIT");
-    			break;
-    		case "first":
-    			System.out.println("LEFT, OKAY, YES, MIDDLE, NO, RIGHT, NOTHING, UHHH, WAIT, READY, BLANK, WHAT, PRESS, FIRST");
-    			break;
-    		case "no":
-    			System.out.println("BLANK, UHHH, WAIT, FIRST, WHAT, READY, RIGHT, YES, NOTHING, LEFT, PRESS, OKAY, NO, MIDDLE");
-    			break;
-    		case "blank":	
-    			System.out.println("WAIT, RIGHT, OKAY, MIDDLE, BLANK, PRESS, READY, NOTHING, NO, WHAT, LEFT, UHHH, YES, FIRST");
-    			break;
-    		case "nothing":	
-    			System.out.println("UHHH, RIGHT, OKAY, MIDDLE, YES, BLANK, NO, PRESS, LEFT, WHAT, WAIT, FIRST, NOTHING, READY");
-    			break;
-    		case "yes":	
-    			System.out.println("OKAY, RIGHT, UHHH, MIDDLE, FIRST, WHAT, PRESS, READY, NOTHING, YES, LEFT, BLANK, NO, WAIT");
-    			break;
-    		case "what":	
-    			System.out.println("UHHH, WHAT, LEFT, NOTHING, READY, BLANK, MIDDLE, NO, OKAY, FIRST, WAIT, YES, PRESS, RIGHT");
-    			break;
-    		case "uhhh":	
-    			System.out.println("READY, NOTHING, LEFT, WHAT, OKAY, YES, RIGHT, NO, PRESS, BLANK, UHHH, MIDDLE, WAIT, FIRST");
-    			break;
-    		case "left":	
-    			System.out.println("RIGHT, LEFT, FIRST, NO, MIDDLE, YES, BLANK, WHAT, UHHH, WAIT, PRESS, READY, OKAY, NOTHING");
-    			break;
-    		case "right":	
-    			System.out.println("YES, NOTHING, READY, PRESS, NO, WAIT, WHAT, RIGHT, MIDDLE, LEFT, UHHH, BLANK, OKAY, FIRST");
-    			break;
-    		case "middle":
-    			System.out.println("BLANK, READY, OKAY, WHAT, NOTHING, PRESS, NO, WAIT, LEFT, MIDDLE, RIGHT, FIRST, UHHH, YES");
-    			break;
-    		case "okay":	
-    			System.out.println("MIDDLE, NO, FIRST, YES, UHHH, NOTHING, WAIT, OKAY, LEFT, READY, BLANK, PRESS, WHAT, RIGHT");
-    			break;
-    		case "wait":	
-    			System.out.println("UHHH, NO, BLANK, OKAY, YES, LEFT, FIRST, PRESS, WHAT, WAIT, NOTHING, READY, RIGHT, MIDDLE");
-    			break;
-    		case "press":
-    			System.out.println("RIGHT, MIDDLE, YES, READY, PRESS, OKAY, NOTHING, UHHH, BLANK, LEFT, FIRST, WHAT, NO, WAIT");
-    			break;
-    		case "you":	
-    			System.out.println("SURE, YOU ARE, YOUR, YOU'RE, NEXT, UH HUH, UR, HOLD, WHAT?, YOU, UH UH, LIKE, DONE, U");
-    			break;
-    		case "you are":	
-    			System.out.println("YOUR, NEXT, LIKE, UH HUH, WHAT?, DONE, UH UH, HOLD, YOU, U, YOU'RE, SURE, UR, YOU ARE");
-    			break;
-    		case "your":
-    			System.out.println("UH UH, YOU ARE, UH HUH, YOUR, NEXT, UR, SURE, U, YOU'RE, YOU, WHAT?, HOLD, LIKE, DONE");
-    			break;
-    		case "you're":	
-    			System.out.println("YOU, YOU'RE, UR, NEXT, UH UH, YOU ARE, U, YOUR, WHAT?, UH HUH, SURE, DONE, LIKE, HOLD");
-    			break;
-    		case "ur":	
-    			System.out.println("DONE, U, UR, UH HUH, WHAT?, SURE, YOUR, HOLD, YOU'RE, LIKE, NEXT, UH UH, YOU ARE, YOU");
-    			break;
-    		case "u":	
-    			System.out.println("UH HUH, SURE, NEXT, WHAT?, YOU'RE, UR, UH UH, DONE, U, YOU, LIKE, HOLD, YOU ARE, YOUR");
-    			break;
-    		case "uh huh":
-    			System.out.println("UH HUH, YOUR, YOU ARE, YOU, DONE, HOLD, UH UH, NEXT, SURE, LIKE, YOU'RE, UR, U, WHAT?");
-    			break;
-    		case "uh uh":	
-    			System.out.println("UR, U, YOU ARE, YOU'RE, NEXT, UH UH, DONE, YOU, UH HUH, LIKE, YOUR, SURE, HOLD, WHAT?");
-    			break;
-    		case "what?":
-    			System.out.println("YOU, HOLD, YOU'RE, YOUR, U, DONE, UH UH, LIKE, YOU ARE, UH HUH, UR, NEXT, WHAT?, SURE");
-    			break;
-    		case "done":	
-    			System.out.println("SURE, UH HUH, NEXT, WHAT?, YOUR, UR, YOU'RE, HOLD, LIKE, YOU, U, YOU ARE, UH UH, DONE");
-    			break;
-    		case "next":
-    			System.out.println("WHAT?, UH HUH, UH UH, YOUR, HOLD, SURE, NEXT, LIKE, DONE, YOU ARE, UR, YOU'RE, U, YOU");
-    			break;
-    		case "hold":
-    			System.out.println("YOU ARE, U, DONE, UH UH, YOU, UR, SURE, WHAT?, YOU'RE, NEXT, HOLD, UH HUH, YOUR, LIKE");
-    			break;
-    		case "sure":	
-    			System.out.println("YOU ARE, DONE, LIKE, YOU'RE, YOU, HOLD, UH HUH, UR, SURE, U, WHAT?, NEXT, YOUR, UH UH");
-    			break;
-    		case "like":
-    			System.out.println("YOU'RE, NEXT, U, UR, HOLD, DONE, UH UH, WHAT?, UH HUH, YOU, LIKE, SURE, YOU ARE, YOUR");
-    			break;
+        	if(!buttonText.equals("0")) {
+        		System.out.println("Push the first button that appears in the list: ");
+            	switch(buttonText) {
+        		case "ready":
+        			System.out.println("YES, OKAY, WHAT, MIDDLE, LEFT, PRESS, RIGHT, BLANK, READY, NO, FIRST, UHHH, NOTHING, WAIT");
+        			break;
+        		case "first":
+        			System.out.println("LEFT, OKAY, YES, MIDDLE, NO, RIGHT, NOTHING, UHHH, WAIT, READY, BLANK, WHAT, PRESS, FIRST");
+        			break;
+        		case "no":
+        			System.out.println("BLANK, UHHH, WAIT, FIRST, WHAT, READY, RIGHT, YES, NOTHING, LEFT, PRESS, OKAY, NO, MIDDLE");
+        			break;
+        		case "blank":	
+        			System.out.println("WAIT, RIGHT, OKAY, MIDDLE, BLANK, PRESS, READY, NOTHING, NO, WHAT, LEFT, UHHH, YES, FIRST");
+        			break;
+        		case "nothing":	
+        			System.out.println("UHHH, RIGHT, OKAY, MIDDLE, YES, BLANK, NO, PRESS, LEFT, WHAT, WAIT, FIRST, NOTHING, READY");
+        			break;
+        		case "yes":	
+        			System.out.println("OKAY, RIGHT, UHHH, MIDDLE, FIRST, WHAT, PRESS, READY, NOTHING, YES, LEFT, BLANK, NO, WAIT");
+        			break;
+        		case "what":	
+        			System.out.println("UHHH, WHAT, LEFT, NOTHING, READY, BLANK, MIDDLE, NO, OKAY, FIRST, WAIT, YES, PRESS, RIGHT");
+        			break;
+        		case "uhhh":	
+        			System.out.println("READY, NOTHING, LEFT, WHAT, OKAY, YES, RIGHT, NO, PRESS, BLANK, UHHH, MIDDLE, WAIT, FIRST");
+        			break;
+        		case "left":	
+        			System.out.println("RIGHT, LEFT, FIRST, NO, MIDDLE, YES, BLANK, WHAT, UHHH, WAIT, PRESS, READY, OKAY, NOTHING");
+        			break;
+        		case "right":	
+        			System.out.println("YES, NOTHING, READY, PRESS, NO, WAIT, WHAT, RIGHT, MIDDLE, LEFT, UHHH, BLANK, OKAY, FIRST");
+        			break;
+        		case "middle":
+        			System.out.println("BLANK, READY, OKAY, WHAT, NOTHING, PRESS, NO, WAIT, LEFT, MIDDLE, RIGHT, FIRST, UHHH, YES");
+        			break;
+        		case "okay":	
+        			System.out.println("MIDDLE, NO, FIRST, YES, UHHH, NOTHING, WAIT, OKAY, LEFT, READY, BLANK, PRESS, WHAT, RIGHT");
+        			break;
+        		case "wait":	
+        			System.out.println("UHHH, NO, BLANK, OKAY, YES, LEFT, FIRST, PRESS, WHAT, WAIT, NOTHING, READY, RIGHT, MIDDLE");
+        			break;
+        		case "press":
+        			System.out.println("RIGHT, MIDDLE, YES, READY, PRESS, OKAY, NOTHING, UHHH, BLANK, LEFT, FIRST, WHAT, NO, WAIT");
+        			break;
+        		case "you":	
+        			System.out.println("SURE, YOU ARE, YOUR, YOU'RE, NEXT, UH HUH, UR, HOLD, WHAT?, YOU, UH UH, LIKE, DONE, U");
+        			break;
+        		case "you are":	
+        			System.out.println("YOUR, NEXT, LIKE, UH HUH, WHAT?, DONE, UH UH, HOLD, YOU, U, YOU'RE, SURE, UR, YOU ARE");
+        			break;
+        		case "your":
+        			System.out.println("UH UH, YOU ARE, UH HUH, YOUR, NEXT, UR, SURE, U, YOU'RE, YOU, WHAT?, HOLD, LIKE, DONE");
+        			break;
+        		case "you're":	
+        			System.out.println("YOU, YOU'RE, UR, NEXT, UH UH, YOU ARE, U, YOUR, WHAT?, UH HUH, SURE, DONE, LIKE, HOLD");
+        			break;
+        		case "ur":	
+        			System.out.println("DONE, U, UR, UH HUH, WHAT?, SURE, YOUR, HOLD, YOU'RE, LIKE, NEXT, UH UH, YOU ARE, YOU");
+        			break;
+        		case "u":	
+        			System.out.println("UH HUH, SURE, NEXT, WHAT?, YOU'RE, UR, UH UH, DONE, U, YOU, LIKE, HOLD, YOU ARE, YOUR");
+        			break;
+        		case "uh huh":
+        			System.out.println("UH HUH, YOUR, YOU ARE, YOU, DONE, HOLD, UH UH, NEXT, SURE, LIKE, YOU'RE, UR, U, WHAT?");
+        			break;
+        		case "uh uh":	
+        			System.out.println("UR, U, YOU ARE, YOU'RE, NEXT, UH UH, DONE, YOU, UH HUH, LIKE, YOUR, SURE, HOLD, WHAT?");
+        			break;
+        		case "what?":
+        			System.out.println("YOU, HOLD, YOU'RE, YOUR, U, DONE, UH UH, LIKE, YOU ARE, UH HUH, UR, NEXT, WHAT?, SURE");
+        			break;
+        		case "done":	
+        			System.out.println("SURE, UH HUH, NEXT, WHAT?, YOUR, UR, YOU'RE, HOLD, LIKE, YOU, U, YOU ARE, UH UH, DONE");
+        			break;
+        		case "next":
+        			System.out.println("WHAT?, UH HUH, UH UH, YOUR, HOLD, SURE, NEXT, LIKE, DONE, YOU ARE, UR, YOU'RE, U, YOU");
+        			break;
+        		case "hold":
+        			System.out.println("YOU ARE, U, DONE, UH UH, YOU, UR, SURE, WHAT?, YOU'RE, NEXT, HOLD, UH HUH, YOUR, LIKE");
+        			break;
+        		case "sure":	
+        			System.out.println("YOU ARE, DONE, LIKE, YOU'RE, YOU, HOLD, UH HUH, UR, SURE, U, WHAT?, NEXT, YOUR, UH UH");
+        			break;
+        		case "like":
+        			System.out.println("YOU'RE, NEXT, U, UR, HOLD, DONE, UH UH, WHAT?, UH HUH, YOU, LIKE, SURE, YOU ARE, YOUR");
+        			break;
+            	}
+            	System.out.println("----------------------------------------------------");
+            	System.out.print("Enter the displayed word (Enter '0' to exit): ");
+            	response = keyboard.nextLine().toLowerCase();
         	}
-        	System.out.println("----------------------------------------------------");
-        	System.out.print("Enter the displayed word (Enter '0' to exit): ");
-        	response = keyboard.nextLine().toLowerCase();
+        	else { break; } 
+        	
+        	
         }
     }
     public boolean whosValidResponse(String word){
@@ -493,149 +525,168 @@ public class Bomb {
     	Scanner keyboard = new Scanner(System.in);
     	int stageOneNumber = 0, stageTwoNumber = 0, stageThreeNumber = 0, stageFourNumber = 0;
     	int stageOnePos = 0, stageTwoPos = 0, stageThreePos = 0, stageFourPos = 0;
+    	boolean exit = false;
+    	int displayNum = 0;
+    	System.out.println("Enter '0' to exit at the beginning of a stage");
     	for(int stage = 1; stage < 6; stage++) {
+    		
     		switch(stage) {
 			case 1:
 				System.out.println("----------");
 				System.out.println("STAGE ONE");
 				System.out.println("----------");
-				switch(getDisplayNum()) {
+				displayNum = getDisplayNum();
+						
+				if(displayNum == 0) { 
+					exit = true;
+					break;
+				}
+				switch(displayNum) {
 				case 1:
 					System.out.println("Press the button in the second position");
 					System.out.print("Enter the number in the second position: ");
 					stageOneNumber = keyboard.nextInt();
 					stageOnePos = 2;
-					stage++;
 					break;
 				case 2:
 					System.out.println("Press the button in the second position");
 					System.out.print("Enter the number in the second position: ");
 					stageOneNumber = keyboard.nextInt();
 					stageOnePos = 2;
-					stage++;
+					
 					break;
 				case 3:
 					System.out.println("Press the button in the third position");
 					System.out.print("Enter the number in the third position: ");
 					stageOneNumber = keyboard.nextInt();
 					stageOnePos = 3;
-					stage++;
 					break;
 				case 4:
 					System.out.println("Press the button in the fourth position");
 					System.out.print("Enter the number in the fourth position: ");
 					stageOneNumber = keyboard.nextInt();
 					stageOnePos = 4;
-					stage++;
 					break;
 				}
+				break;
 			case 2:
 				System.out.println("---------");
 				System.out.println("STAGE TWO");
 				System.out.println("---------");
-				switch(getDisplayNum()) {
+				displayNum = getDisplayNum();
+				if(displayNum == 0) { 
+					exit = true;
+					break;
+				}
+				switch(displayNum) {
 				case 1:
 					System.out.println("Press the button labeled 4");
 					stageTwoNumber = 4;
 					System.out.print("What position is it in? (Use numbers): ");
 					stageTwoPos = keyboard.nextInt();
-					stage++;
 					break;
 				case 2:
 					System.out.println("Press the button in position " + stageOnePos);
 					System.out.print("Enter the number in the position: ");
 					stageTwoNumber = keyboard.nextInt();
 					stageTwoPos = stageOnePos;
-					stage++;
 					break;
 				case 3:
 					System.out.println("Press the button in the first position");
 					System.out.print("Enter the number in the first position: ");
 					stageTwoNumber = keyboard.nextInt();
 					stageTwoPos = 1;
-					stage++;
 					break;
 				case 4:
 					System.out.println("Press the button in position " + stageOnePos);
 					System.out.print("Enter the number in the position: ");
 					stageTwoNumber = keyboard.nextInt();
 					stageTwoPos = stageOnePos;
-					stage++;
 					break;
 				}
+				break;
 			case 3:
 				System.out.println("-----------");
 				System.out.println("STAGE THREE");
 				System.out.println("-----------");
-				switch(getDisplayNum()) {
+				displayNum = getDisplayNum();
+				if(displayNum == 0) { 
+					exit = true;
+					break;
+				}
+				switch(displayNum) {
 				case 1:
 					System.out.println("Press the button labeled " + stageTwoNumber);
 					stageThreeNumber = stageTwoNumber;
 					System.out.print("What position is it in? (Use numbers): ");
 					stageThreePos = keyboard.nextInt();
-					stage++;
 					break;
 				case 2:
 					System.out.println("Press the button labeled " + stageOneNumber);
 					stageThreeNumber = stageOneNumber;
 					System.out.print("What position is it in? (Use numbers): ");
 					stageThreePos = keyboard.nextInt();
-					stage++;
 					break;
 				case 3:
 					System.out.println("Press the button in the third position");
 					stageThreePos = 3;
 					System.out.print("Enter the number in the third position: ");
 					stageThreeNumber = keyboard.nextInt();
-					stage++;
 					break;
 				case 4:
 					System.out.println("Press the button labeled 4");
 					stageThreeNumber = 4;
 					System.out.print("What position is it in? (Use numbers): ");
 					stageThreePos = keyboard.nextInt();
-					stage++;
 					break;
 				}
+				break;
 			case 4:
 				System.out.println("----------");
 				System.out.println("STAGE FOUR");
 				System.out.println("----------");
-				switch(getDisplayNum()) {
+				displayNum = getDisplayNum();
+				if(displayNum == 0) { 
+					exit = true;
+					break;
+				}
+				switch(displayNum) {
 				case 1:
 					System.out.println("Press the button in position " + stageOnePos);
 					stageFourPos = stageOnePos;
 					System.out.print("Enter the number in the position: ");
 					stageFourNumber = keyboard.nextInt();
-					stage++;
 					break;
 				case 2:
 					System.out.println("Press the button in the first position");
 					stageFourPos = 1;
 					System.out.print("Enter the number in the first position: ");
 					stageFourNumber = keyboard.nextInt();
-					stage++;
 					break;
 				case 3:
 					System.out.println("Press the button in position " + stageTwoPos);
 					stageFourPos = stageTwoPos;
 					System.out.print("Enter the number in the position: ");
 					stageFourNumber = keyboard.nextInt();
-					stage++;
 					break;
 				case 4:
 					System.out.println("Press the button in position " + stageTwoPos);
 					stageFourPos = stageTwoPos;
 					System.out.print("Enter the number in the position: ");
 					stageFourNumber = keyboard.nextInt();
-					stage++;
 					break;
 				}
+				break;
 			case 5:
 				System.out.println("-----------");
 				System.out.println("STAGE FIVE");
 				System.out.println("-----------");
-				switch(getDisplayNum()) {
+				displayNum = getDisplayNum();
+				if(displayNum == 0) { 
+					exit = true;
+					break;
+				}
+				switch(displayNum) {
 				case 1:
 					System.out.println("Press the button labeled " + stageOneNumber);
 					stage++;
@@ -653,9 +704,17 @@ public class Bomb {
 					stage++;
 					break;
 				}
+				break;
     		}
+    		if(exit) break;
     		
     	}	
+    }
+    private boolean checkToExit(int response) {
+    	if(response == 0) {
+    		return true;
+    	}
+    	return false;
     }
     private int getDisplayNum() {
 
@@ -708,15 +767,6 @@ public class Bomb {
     }
     
     public void sequences(){
-        /*
-        Solve a *Wire Sequences* module.
-        Run the solver. For each step, enter the colour of the wire, and its
-        connection. The solver prints the decision for each wire.
-        **Colours :**
-        - blue : b
-        - black : k
-        - red : r
-         */
     	Scanner keyboard = new Scanner(System.in);
     	int redCount = 0, blueCount = 0, blackCount = 0;
     	System.out.println("---------------------------------------------------------");
@@ -729,6 +779,7 @@ public class Bomb {
 			String wire_connection = keyboard.nextLine().toLowerCase();
 			//Determines wire number
 			if(wire_connection.equals("")) {
+				System.out.println("---------------------------------------------------------");
 				continue;
 			}
 			else if(wire_connection.equals("0")) {

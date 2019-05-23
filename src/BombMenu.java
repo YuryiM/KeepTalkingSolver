@@ -169,14 +169,19 @@ public class BombMenu {
         // Declaring boolean for validity of userAnswer (Defaulted to false)
         boolean validAnswer = false;
         //Do while loop that loops until user gives valid input
+        
+        boolean exit = false;
         do {
             validAnswer = true;
             System.out.println("Button Module Loaded...");
+            System.out.println("Enter '0' to exit to menu");
             System.out.println("Please enter the word on the button:");
             word = scanner.next();
+            if(word.equals("0")) { exit = true; break; }
             System.out.println("Please enter the color of the button");
             try {
                 color = scanner.next();
+                if(color.equals("0")) { exit = true; break; }
             } catch (Exception ex) {
                 // Print error message
                 System.out.println("Sorry, Invalid entry for wires...Please Retry!");
@@ -185,26 +190,37 @@ public class BombMenu {
                 validAnswer = false;
             }
         } while (!validAnswer);
-        System.out.println();
-        System.out.println(bomb.button(word, color));
+        
+        if(!exit) {
+        	System.out.println();
+            System.out.println(bomb.button(word, color));
+        }
+        
     }
 
     public static void keypad() {
         System.out.println("Keypad Module Loaded...");
+        System.out.println("Enter '0' to exit to menu");
         System.out.println("Please enter the symbols on the buttons separated by commas:");
         String[] symbols = scanner.next().split(",");
         System.out.println();
-        System.out.println(bomb.keypad(symbols));
+        if(!symbols[0].equals("0")) {
+        	System.out.println(bomb.keypad(symbols));
+        }
+        
     }
 
     public static void password() {
         // Declaring String
         String letters;
         System.out.println("Password Module Loaded...");
-        System.out.println("Please enter all the possible letters in the first position:");
+        System.out.println("Please enter all the possible letters in the first position (Enter '0' to exit):");
         letters = scanner.next();
-        System.out.println();
-        System.out.println(bomb.passwords(letters));
+        if(!letters.equals("0")) {
+        	System.out.println();
+            System.out.println(bomb.passwords(letters));
+        }
+        
     }
 
 
